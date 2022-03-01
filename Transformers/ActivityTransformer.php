@@ -13,6 +13,8 @@ class ActivityTransformer extends CrudResource
   */
   public function modelAttributes($request)
   {
-    return [];
+    return [
+      'statusName' => $this->statusName,
+    ];
   }
 }

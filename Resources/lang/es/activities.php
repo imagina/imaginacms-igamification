@@ -21,4 +21,8 @@ return [
     ],
     'validation' => [
     ],
+    'status' => [
+        'inactive' => 'Inactiva',
+        'active' => 'Activa'
+    ]
 ];

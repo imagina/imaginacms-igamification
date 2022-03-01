@@ -5,6 +5,8 @@ namespace Modules\Igamification\Entities;
 use Astrotomic\Translatable\Translatable;
 use Modules\Core\Icrud\Entities\CrudModel;
 
+use Modules\Igamification\Entities\Status;
+
 class Activity extends CrudModel
 {
     use Translatable;
@@ -17,6 +19,8 @@ class Activity extends CrudModel
       ];
     public $translatedAttributes = [];
     protected $fillable = [
+        'system_name',
+        'status',
         'url',
         'category_id'
     ];
@@ -52,6 +56,12 @@ class Activity extends CrudModel
     public function getOptionsAttribute($value)
     {
         return json_decode($value);
+    }
+
+    public function getStatusNameAttribute()
+    {
+        $status = new Status();
+        return $status->get($this->status);
     }
 
 }
