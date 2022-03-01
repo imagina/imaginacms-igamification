@@ -37,21 +37,20 @@ class EloquentActivityRepository extends EloquentCrudRepository implements Activ
      *
      */
 
-      // add filter by Categories 1 or more than 1, in array/*
-    /*
+    // add filter by Categories 1 or more than 1, in array/*
+    
     if (isset($filter->categories) && !empty($filter->categories)) {
+      
         is_array($filter->categories) ? true : $filter->categories = [$filter->categories];
-
-        //dd($filter->categories);
 
         $query->where(function ($query) use ($filter) {
           $query->whereHas('categories', function ($query) use ($filter) {
             $query->whereIn('igamification__activity_category.category_id', $filter->categories);
-          })->orWhereIn('category_id', $filter->categories);
+          });
         });
 
     }
-    */
+    
 
     //Response
     return $query;
