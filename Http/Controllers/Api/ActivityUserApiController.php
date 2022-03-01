@@ -89,12 +89,5 @@ class ActivityUserApiController extends BaseApiController
         return response()->json($response ?? ["data" => "Request successful"], $status ?? 200);
     }
 
-  
-
-   
-
-   
-
-    
 
 }
