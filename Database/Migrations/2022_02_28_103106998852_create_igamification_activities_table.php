@@ -17,9 +17,11 @@ class CreateIgamificationActivitiesTable extends Migration
             $table->increments('id');
             
             // Your fields...
+            $table->string('system_name')->unique()->nullable();
             $table->text('url');
+            $table->integer('status')->default(0)->unsigned();
             $table->text('options')->nullable();
-
+            
             $table->integer('category_id')->unsigned()->nullable();
             $table->foreign('category_id')->references('id')->on('igamification__categories')->onDelete('restrict');
             
