@@ -20,6 +20,7 @@ return [
     'messages' => [
     ],
     'validation' => [
+        'not actives' => 'No existen actividades activas',
     ],
     'status' => [
         'inactive' => 'Inactiva',

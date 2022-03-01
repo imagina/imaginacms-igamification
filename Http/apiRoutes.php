@@ -15,6 +15,16 @@ $router->group(['prefix' =>'/igamification/v1'], function (Router $router) {
       'controller' => 'ActivityApiController',
       //'middleware' => ['create' => [], 'index' => [], 'show' => [], 'update' => [], 'delete' => [], 'restore' => []]
     ]);
+
+    //
+    $router->group(['prefix' => 'activity-user'], function (Router $router) {
+      $router->get('/', [
+        'as' => 'api.igamification.activity-user.get.items.by',
+        'uses' => 'ActivityUserApiController@index',
+        'middleware' => ['auth:api']
+      ]);
+    });
+
 // append
 
 
