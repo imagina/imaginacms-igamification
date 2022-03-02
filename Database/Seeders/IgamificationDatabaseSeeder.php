@@ -16,6 +16,6 @@ class IgamificationDatabaseSeeder extends Seeder
     {
         Model::unguard();
 
-        // $this->call("OthersTableSeeder");
+        $this->call(ActivityTableSeeder::class);
     }
 }
