@@ -18,7 +18,7 @@ class CreateIgamificationActivitiesTable extends Migration
             
             // Your fields...
             $table->string('system_name')->unique()->nullable();
-            $table->text('url');
+            $table->text('url')->nullable();
             $table->integer('status')->default(0)->unsigned();
             $table->text('options')->nullable();
             
