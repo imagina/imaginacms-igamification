@@ -5,7 +5,7 @@ namespace Modules\Igamification\Events\Handlers;
 use Modules\Igamification\Repositories\ActivityRepository;
 use Modules\Igamification\Events\ActivityWasCompleted;
 
-class SyncActivityUser
+class DeleteActivityUser
 {
 
     public $activityRepository;
@@ -18,8 +18,14 @@ class SyncActivityUser
     public function handle($event)
     {
 
-        \Log::info('Igamification: Events|Handlers|SyncActivityUser');
-        $systemNameActivity = $event->systemNameActivity;
+        \Log::info('Igamification: Events|Handlers|DeleteActivityUser');
+        
+        // All params Event
+        $params = $event->params;
+        // Extra data custom event entity
+        $extraData = $params['extraData'];
+
+        $systemNameActivity = $extraData['systemNameActivity'];
 
         // Only activity exist and is active
         $activity = $this->activityRepository->findByAttributes([
@@ -32,13 +38,11 @@ class SyncActivityUser
             //Get User Logged - Middleware Auth
             $userId = \Auth::user()->id;
           
-            //Sync in Pivot
-            $activity->users()->toggle([$userId]);
+            //Delete in Pivot
+            $activity->users()->detach($userId);
             
         }else{
             \Log::info('Igamification: Events|Handlers|SyncActivityUser| Activity no exist or is inactive ');
-
-            //throw new \Exception('Igamification: Events|Handlers|SaveActivityUser| Activity no exist or is inactive ', 500);
         }
 
 

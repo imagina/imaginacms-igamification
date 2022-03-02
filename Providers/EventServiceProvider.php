@@ -7,17 +7,18 @@ use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvi
 use Modules\Igamification\Events\ActivityWasCompleted;
 use Modules\Igamification\Events\ActivityIsIncompleted;
 
-use Modules\Igamification\Events\Handlers\SyncActivityUser;
+use Modules\Igamification\Events\Handlers\AddActivityUser;
+use Modules\Igamification\Events\Handlers\DeleteActivityUser;
 
 class EventServiceProvider extends ServiceProvider
 {
     protected $listen = [
         
         ActivityWasCompleted::class => [
-            SyncActivityUser::class
+            AddActivityUser::class
         ],
         ActivityIsIncompleted::class => [
-            SyncActivityUser::class
+            DeleteActivityUser::class
         ],
 
     ];

@@ -6,11 +6,9 @@ class ActivityWasCompleted
 {
     
     public $params;
-    public $systemNameActivity;
-
-    public function __construct($systemNameActivity,$params = null)
+    
+    public function __construct($params = null)
     {
-        $this->systemNameActivity = $systemNameActivity;
         $this->params = $params;
     }
 
