@@ -16,6 +16,7 @@ class CreateIgamificationCategoriesTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             // Your fields...
+            $table->string('system_name')->unique()->nullable();
             $table->integer('parent_id')->default(0)->nullable();
             $table->text('options')->nullable();
 

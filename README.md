@@ -17,7 +17,7 @@ php artisan module:migrate Igamification
 
 ## Seeder
 ```bash
-php artisan module:seed Igamifications
+php artisan module:seed Igamification
 ```
 
 ## Example Config Activies in a Module

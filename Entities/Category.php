@@ -4,6 +4,7 @@ namespace Modules\Igamification\Entities;
 
 use Astrotomic\Translatable\Translatable;
 use Modules\Core\Icrud\Entities\CrudModel;
+use Illuminate\Support\Str;
 
 class Category extends CrudModel
 {
@@ -21,12 +22,31 @@ class Category extends CrudModel
         'slug'
     ];
     protected $fillable = [
+        'system_name',
         'parent_id'
     ];
 
     protected $casts = [
         'options' => 'array'
     ];
+
+    // Esto es solo para probar por api q los eventos stuviesen disparandoc
+    /*
+    public $dispatchesEventsWithBindings = [
+        'created' => [
+            [
+              'path' => 'Modules\Igamification\Events\ActivityWasCompleted',
+              'extraData' => ['systemNameActivity' => 'availability-organize']
+            ]
+        ],
+        'deleted' => [
+            [
+              'path' => 'Modules\Igamification\Events\ActivityIsIncompleted',
+              'extraData' => ['systemNameActivity' => 'availability-organize']
+            ]
+        ]
+    ];
+    */
 
 
     //============== RELATIONS ==============//
@@ -56,6 +76,17 @@ class Category extends CrudModel
     public function getOptionsAttribute($value)
     {
         return json_decode($value);
+    }
+
+    public function setSystemNameAttribute($value)
+    {
+
+        if(empty($value) || is_null($value)){
+            $this->attributes['system_name'] = Str::slug($this->title, '-');
+        }else{
+            $this->attributes['system_name'] = $value;
+        }
+
     }
 
 
