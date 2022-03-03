@@ -15,6 +15,12 @@ $router->group(['prefix' =>'/igamification/v1'], function (Router $router) {
       'controller' => 'ActivityApiController',
       //'middleware' => ['create' => [], 'index' => [], 'show' => [], 'update' => [], 'delete' => [], 'restore' => []]
     ]);
+  $router->apiCrud([
+    'module' => 'igamification',
+    'prefix' => 'statuses',
+    'staticEntity' => 'Modules\Igamification\Entities\Status',
+    //'middleware' => ['create' => [], 'index' => [], 'show' => [], 'update' => [], 'delete' => [], 'restore' => []]
+  ]);
 
     //
     $router->group(['prefix' => 'activity-user'], function (Router $router) {

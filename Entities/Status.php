@@ -7,7 +7,7 @@ class Status
 {
     const INACTIVE = 0;
     const ACTIVE = 1;
-   
+
     private $statuses = [];
 
     public function __construct()
@@ -23,7 +23,7 @@ class Status
         return $this->statuses;
     }
 
-   
+
     public function get($statusId)
     {
         if (isset($this->statuses[$statusId])) {
@@ -32,5 +32,16 @@ class Status
 
         return $this->statuses[self::INACTIVE];
     }
-    
+
+  public function index()
+  {
+    //Instance response
+    $response = [];
+    //AMp status
+    foreach ($this->statuses as $key => $status) {
+      array_push($response, ['id' => $key, 'title' => $status]);
+    }
+    //Repsonse
+    return collect($response);
+  }
 }
