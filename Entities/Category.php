@@ -5,10 +5,11 @@ namespace Modules\Igamification\Entities;
 use Astrotomic\Translatable\Translatable;
 use Modules\Core\Icrud\Entities\CrudModel;
 use Illuminate\Support\Str;
+use Modules\Media\Support\Traits\MediaRelation;
 
 class Category extends CrudModel
 {
-    use Translatable;
+    use Translatable,MediaRelation;
 
     protected $table = 'igamification__categories';
     public $transformer = 'Modules\Igamification\Transformers\CategoryTransformer';
