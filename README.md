@@ -40,7 +40,7 @@ public $dispatchesEventsWithBindings = [
   'created' => [
         [
           'path' => 'Modules\Igamification\Events\ActivityWasCompleted',
-          'extraData' => ['systemNameActivity' => 'availability-organize']
+          'extraData' => ['systemNameActivity' => 'system-name-example']
         ]
       ]
   ];
@@ -50,18 +50,10 @@ public $dispatchesEventsWithBindings = [
 Add in your Module when your considered that process is completed for logged user
 
 ```bash
-use Modules\Igamification\Events\ActivityWasCompleted;
-
-$paramsEvent['extraData']['systemNameActivity'] = "system-name-example";
-event(new ActivityWasCompleted($paramsEvent));
-```
-
-### ActivityIsIncomplete
-Add in your Module when your considered that process is removed for logged user
-
-```bash
-use Modules\Igamification\Events\ActivityIsIncompleted;
-
-$paramsEvent['extraData']['systemNameActivity'] = "system-name-example";
-event(new ActivityIsIncompleted($paramsEvent));
+if (is_module_enabled("Igamification")) event(new \Modules\Igamification\Events\ActivityWasCompleted([
+      'extraData' => [
+        'systemNameActivity' => 'system-name-example'
+      ]
+  ])
+);
 ```
