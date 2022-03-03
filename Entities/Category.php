@@ -39,17 +39,11 @@ class Category extends CrudModel
               'path' => 'Modules\Igamification\Events\ActivityWasCompleted',
               'extraData' => ['systemNameActivity' => 'availability-organize']
             ]
-        ],
-        'deleted' => [
-            [
-              'path' => 'Modules\Igamification\Events\ActivityIsIncompleted',
-              'extraData' => ['systemNameActivity' => 'availability-organize']
-            ]
         ]
+        
     ];
     */
-
-
+    
     //============== RELATIONS ==============//
 
     public function activities()
