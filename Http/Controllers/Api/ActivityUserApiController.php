@@ -12,9 +12,12 @@ use Modules\Igamification\Repositories\ActivityRepository;
 // Entities
 use Modules\Igamification\Entities\Activity;
 
+//Transformer
+use Modules\Igamification\Transformers\ActivityTransformer;
+
 class ActivityUserApiController extends BaseApiController
 {
-   
+
     public $activity;
 
     public function __construct(
@@ -37,7 +40,7 @@ class ActivityUserApiController extends BaseApiController
 
             //Filter params
             $paramsFilters = (array)$params->filter;
-          
+
             //Filter default
             $defaultFilters = ["status" => 1]; // Only Actives
 
@@ -54,28 +57,30 @@ class ActivityUserApiController extends BaseApiController
 
             //Get User Logged - Middleware Auth
             $userId = \Auth::user()->id;
-            
-            //Get activities completed for this User
-            foreach ($activities as $key => $activity) {
-                $user = $activity->users->where('id',$userId)->first();
 
-                $activity->user_id = $userId;
+            //Get activities completed for this User
+            $response = [];
+            foreach ($activities as &$activity) {
+                $user = $activity->users->where('id',$userId)->first();
+                $activity = json_decode(json_encode(new ActivityTransformer($activity)));
+
+                $activity->userId = $userId;
 
                 if(!is_null($user))
-                    $activity->user_completed = true;
+                    $activity->userCompleted = true;
                 else
-                    $activity->user_completed = false;
+                    $activity->userCompleted = false;
 
                 // To clean result data
-                $activity->unsetRelation('users');
+                unset($activity->users);
+                $response[] = $activity;
             }
-           
-        
+
             /*
-                Response Collection activities with 2 extra attributes: 
+                Response Collection activities with 2 extra attributes:
                     user_id and user_completed
             */
-            $response = ["data" => $activities];
+            $response = ["data" => collect($response)];
 
             //If request pagination add meta-page
             $params->page ? $response["meta"] = ["page" => $this->pageTransformer($models)] : false;

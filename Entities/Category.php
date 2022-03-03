@@ -6,10 +6,11 @@ use Astrotomic\Translatable\Translatable;
 use Modules\Core\Icrud\Entities\CrudModel;
 use Illuminate\Support\Str;
 use Modules\Media\Support\Traits\MediaRelation;
+use Modules\Ifillable\Traits\isFillable;
 
 class Category extends CrudModel
 {
-    use Translatable,MediaRelation;
+    use Translatable,MediaRelation,isFillable;
 
     protected $table = 'igamification__categories';
     public $transformer = 'Modules\Igamification\Transformers\CategoryTransformer';
