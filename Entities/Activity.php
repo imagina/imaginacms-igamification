@@ -24,7 +24,8 @@ class Activity extends CrudModel
         'system_name',
         'status',
         'url',
-        'category_id'
+        'category_id',
+        'options'
     ];
 
     protected $casts = [
