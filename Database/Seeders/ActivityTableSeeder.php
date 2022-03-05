@@ -21,7 +21,7 @@ class ActivityTableSeeder extends Seeder
         $modules = \Module::getByStatus(1);
         foreach ($modules as $key => $module) {
             $name = $module->getLowerName();
-            
+
             // Get activities from config module
             $activities = config('asgard.'.$name.'.config.activities');
 
@@ -29,7 +29,7 @@ class ActivityTableSeeder extends Seeder
                 $this->command->info("Activities to Module: ".$name);
                 $this->saveActivitiesFromModule($activities);
             }
-           
+
         }
 
     }
@@ -43,7 +43,7 @@ class ActivityTableSeeder extends Seeder
 
         // Each activity from config
         foreach ($activities as $key => $activity) {
-                    
+
             $result = $activityRepository->findByAttributes([
                 'system_name'=> $activity['system_name']
             ]);
@@ -60,14 +60,14 @@ class ActivityTableSeeder extends Seeder
 
                 // For now adding translations like this, with the other methods it did not work in all cases
                 $translationsAtt['title'] = $activity['title'];
-                $translationsAtt['description'] = $activity['description'] ?? '';
+                $translationsAtt['description'] = $activity['description'] ?? $activity['title'];
 
                 $this->addTranslation($activityCreated,'en',$translationsAtt);
                 $this->addTranslation($activityCreated,'es',$translationsAtt);
 
             }else{
                 $this->command->alert("This activity: {$activity['system_name']} has already exist !!");
-            }   
+            }
 
         }// end foreach
     }
@@ -87,8 +87,8 @@ class ActivityTableSeeder extends Seeder
 
     }
 
-    
 
-   
+
+
 
 }
