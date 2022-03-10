@@ -38,13 +38,15 @@ class IgamificationServiceProvider extends ServiceProvider
 
     public function boot()
     {
-       
+
         $this->publishConfig('igamification', 'config');
         $this->publishConfig('igamification', 'crud-fields');
 
         $this->mergeConfigFrom($this->getModuleConfigFilePath('igamification', 'settings'), "asgard.igamification.settings");
         $this->mergeConfigFrom($this->getModuleConfigFilePath('igamification', 'settings-fields'), "asgard.igamification.settings-fields");
         $this->mergeConfigFrom($this->getModuleConfigFilePath('igamification', 'permissions'), "asgard.igamification.permissions");
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('igamification', 'cmsPages'), "asgard.igamification.cmsPages");
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('igamification', 'cmsSidebar'), "asgard.igamification.cmsSidebar");
 
         $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
     }
