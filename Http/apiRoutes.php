@@ -13,7 +13,7 @@ $router->group(['prefix' => '/igamification/v1'], function (Router $router) {
     'module' => 'igamification',
     'prefix' => 'activities',
     'controller' => 'ActivityApiController',
-    'middleware' => ['create' => [], 'index' => [], 'show' => [], 'update' => [], 'delete' => [], 'restore' => []]
+    //'middleware' => ['create' => [], 'index' => [], 'show' => [], 'update' => [], 'delete' => [], 'restore' => []]
   ]);
   $router->apiCrud([
     'module' => 'igamification',
