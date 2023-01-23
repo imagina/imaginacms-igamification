@@ -10,7 +10,7 @@ class CreateActivityRequest extends BaseFormRequest
     {
         return [
             'system_name' => 'required',
-            'url' => 'required|min:5'
+            //'url' => 'required|min:5'
         ];
     }
 
@@ -20,7 +20,7 @@ class CreateActivityRequest extends BaseFormRequest
         return [
             'title' => 'required|min:2',
         ];
-        
+
     }
 
     public function authorize()
@@ -32,7 +32,7 @@ class CreateActivityRequest extends BaseFormRequest
     {
         return [
             'system_name.required' => trans('igamification::common.messages.field required'),
-            'url.required' => trans('igamification::common.messages.field required')
+            //'url.required' => trans('igamification::common.messages.field required')
         ];
     }
 
@@ -47,5 +47,5 @@ class CreateActivityRequest extends BaseFormRequest
     public function getValidator(){
         return $this->getValidatorInstance();
     }
-    
+
 }
