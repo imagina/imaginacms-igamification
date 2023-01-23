@@ -30,6 +30,6 @@ return [
     'internalURL' => 'Url Interna',
     'externalUrl' => 'Url Externa',
     'internalForm' => 'Formulario Interno',
-    'externalScript' => 'Script Externo'
+    'formScript' => 'Script de Formulario'
   ]
 ];
