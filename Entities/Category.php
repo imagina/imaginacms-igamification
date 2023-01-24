@@ -26,7 +26,8 @@ class Category extends CrudModel
   protected $fillable = [
     'system_name',
     'parent_id',
-    'status'
+    'status',
+    'options'
   ];
 
   protected $casts = [

@@ -41,11 +41,16 @@ class ActivityTransformer extends CrudResource
     ];
 
     if (isset($filter->validateComplete)) {
-      $userId = \Auth::user()->id;
-      $user = $this->users->where('id', $userId)->first();
-
-      $data['userId'] = $userId;
-      $data['userCompleted'] = $user ? true : false;
+      $user = \Auth::user();
+      if ($user) {
+        $userId = $user->id;
+        $user = $this->users->where('id', $userId)->first();
+        $data['userId'] = $userId;
+        $data['userCompleted'] = $user ? true : false;
+      } else {
+        $data['userId'] = null;
+        $data['userCompleted'] = false;
+      }
     }
 
     //Response

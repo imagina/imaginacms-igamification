@@ -34,7 +34,8 @@ return [
       'clearable' => true
     ],
     'loadOptions' => [
-      'apiRoute' => 'apiRoutes.qgamification.categories'
+      'apiRoute' => 'apiRoutes.qgamification.categories',
+      'select' => ['label' => 'title', 'id' => 'systemName']
     ]
   ],
   'hcCentralizedSource' => [

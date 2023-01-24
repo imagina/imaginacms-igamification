@@ -7,13 +7,13 @@ $router->group(['prefix' => '/igamification/v1'], function (Router $router) {
     'module' => 'igamification',
     'prefix' => 'categories',
     'controller' => 'CategoryApiController',
-    //'middleware' => ['create' => [], 'index' => [], 'show' => [], 'update' => [], 'delete' => [], 'restore' => []]
+    'middleware' => ['index' => [], 'show' => []]
   ]);
   $router->apiCrud([
     'module' => 'igamification',
     'prefix' => 'activities',
     'controller' => 'ActivityApiController',
-    //'middleware' => ['create' => [], 'index' => [], 'show' => [], 'update' => [], 'delete' => [], 'restore' => []]
+    'middleware' => ['index' => [], 'show' => []]
   ]);
   $router->apiCrud([
     'module' => 'igamification',
