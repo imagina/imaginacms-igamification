@@ -8,6 +8,7 @@ class Type
   const EXTERNAL_URL = 2;
   const INTERNAL_FORM = 3;
   const FORM_SCRIPT = 4;
+  const IFRAME = 5;
   const DEFAULT_TYPE = self::INTERNAL_URL;
 
   private $types = [];
@@ -18,7 +19,8 @@ class Type
       self::INTERNAL_URL => trans('igamification::activities.type.internalURL'),
       self::EXTERNAL_URL => trans('igamification::activities.type.externalUrl'),
       self::INTERNAL_FORM => trans('igamification::activities.type.internalForm'),
-      self::FORM_SCRIPT => trans('igamification::activities.type.formScript')
+      self::FORM_SCRIPT => trans('igamification::activities.type.formScript'),
+      self::IFRAME => 'Iframe'
     ];
   }
 
