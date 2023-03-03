@@ -12,7 +12,7 @@ return [
       "page" => "qcrud/_pages/admin/crudPage",
       "layout" => "qsite/_layouts/master.vue",
       "title" => "igamification.cms.sidebar.adminActivities",
-      "icon" => "fas fa-dice",
+      "icon" => "fal fa-dice",
       "subHeader" => [
         "refresh" => true
       ]
@@ -27,7 +27,7 @@ return [
       "page" => "qcrud/_pages/admin/crudPage",
       "layout" => "qsite/_layouts/master.vue",
       "title" => "igamification.cms.sidebar.adminCategories",
-      "icon" => "fas fa-layer-group",
+      "icon" => "fal fa-layer-group",
       "subHeader" => [
         "refresh" => true
       ]

@@ -4,10 +4,10 @@ return [
   "admin" => [
     [
       "title" => 'igamification.cms.sidebar.adminGroup',
-      "icon" => 'fas fa-gamepad',
+      "icon" => 'fa-light fa-gamepad-modern',
       "children" => [
-        "igamification_cms_admin_activities",
         "igamification_cms_admin_categories",
+        "igamification_cms_admin_activities"
       ]
     ]
   ],
