@@ -10,4 +10,8 @@ return [
   'updateActivity' => 'Update Activity',
   'newCategory' => 'New Category',
   'updateCategory' => 'Update Category',
+  "label" => [
+    "tourElement" => "Element Id",
+    "tourElementPosition" => "Element Position"
+  ]
 ];
