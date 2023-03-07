@@ -25,6 +25,7 @@ return [
     'internalURL' => 'Internal URL',
     'externalUrl' => 'External Url',
     'internalForm' => 'Internal Form',
-    'formScript' => 'Form Script'
+    'formScript' => 'Form Script',
+    'tour' => 'Tour'
   ]
 ];

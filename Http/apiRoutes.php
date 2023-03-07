@@ -7,7 +7,7 @@ $router->group(['prefix' => '/igamification/v1'], function (Router $router) {
     'module' => 'igamification',
     'prefix' => 'categories',
     'controller' => 'CategoryApiController',
-    'middleware' => ['index' => [], 'show' => []]
+    'middleware' => ['index' => ['optional-auth'], 'show' => ['optional-auth']]
   ]);
   $router->apiCrud([
     'module' => 'igamification',

@@ -30,6 +30,7 @@ return [
     'internalURL' => 'Url Interna',
     'externalUrl' => 'Url Externa',
     'internalForm' => 'Formulario Interno',
-    'formScript' => 'Script de Formulario'
+    'formScript' => 'Script de Formulario',
+    'tour' => 'Recorrido'
   ]
 ];

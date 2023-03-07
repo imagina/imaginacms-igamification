@@ -30,22 +30,19 @@ class Category extends CrudModel
     'options'
   ];
 
+  protected $with = ["users"];
+
   protected $casts = [
     'options' => 'array'
   ];
 
-  // Esto es solo para probar por api q los eventos stuviesen disparandoc
-  /*
   public $dispatchesEventsWithBindings = [
-      'created' => [
-          [
-            'path' => 'Modules\Igamification\Events\ActivityWasCompleted',
-            'extraData' => ['systemNameActivity' => 'availability-organize']
-          ]
+    'retrievedShow' => [
+      [
+        'path' => 'Modules\Igamification\Events\CategoryWasCompleted'
       ]
-
+    ]
   ];
-  */
 
   //============== RELATIONS ==============//
 
@@ -62,6 +59,13 @@ class Category extends CrudModel
   public function children()
   {
     return $this->hasMany(Category::class, 'parent_id');
+  }
+
+  public function users()
+  {
+    $driver = config('asgard.user.config.driver');
+
+    return $this->belongsToMany("Modules\\User\\Entities\\{$driver}\\User", 'igamification__category_user');
   }
 
   //============== MUTATORS / ACCESORS ==============//
