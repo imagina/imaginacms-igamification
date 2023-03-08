@@ -7,6 +7,7 @@ use Modules\Core\Icrud\Entities\CrudModel;
 use Illuminate\Support\Str;
 use Modules\Media\Support\Traits\MediaRelation;
 use Modules\Ifillable\Traits\isFillable;
+use Modules\Igamification\Entities\Activity;
 
 class Category extends CrudModel
 {
@@ -48,7 +49,7 @@ class Category extends CrudModel
 
   public function activities()
   {
-    return $this->belongsToMany(Category::class, 'igamification__activity_category');
+    return $this->belongsToMany(Activity::class, 'igamification__activity_category');
   }
 
   public function parent()
