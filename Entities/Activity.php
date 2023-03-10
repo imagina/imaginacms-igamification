@@ -28,7 +28,8 @@ class Activity extends CrudModel
     'url',
     'category_id',
     'type',
-    'options'
+    'options',
+    'position'
   ];
 
   protected $casts = [
