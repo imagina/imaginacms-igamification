@@ -43,10 +43,10 @@ class ActivityTransformer extends CrudResource
       })->with('translations', 'fields')->first();
 
       //Instance data
-      $data = [
+      $data = array_merge($data, [
         'form' => isset($form->id) ? new FormTransformer($form) : null,
         'formId' => $form->id ?? null,
-      ];
+      ]);
     }
 
     if (isset($filter->validateComplete)) {
