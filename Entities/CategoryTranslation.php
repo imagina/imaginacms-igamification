@@ -14,7 +14,8 @@ class CategoryTranslation extends Model
     protected $fillable = [
         'title',
         'description',
-        'slug'
+        'slug',
+        'summary'
     ];
     protected $table = 'igamification__category_translations';
 

@@ -22,7 +22,8 @@ class Category extends CrudModel
   public $translatedAttributes = [
     'title',
     'description',
-    'slug'
+    'slug',
+    'summary'
   ];
   protected $fillable = [
     'system_name',
