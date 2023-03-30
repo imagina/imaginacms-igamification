@@ -15,7 +15,7 @@ class IgamificationModuleTableSeeder extends Seeder
   public function run()
   {
     Model::unguard();
-  
+
 
     $columns = [
       ["config" => "cms-pages", "name" => "cms_pages"],
@@ -24,10 +24,11 @@ class IgamificationModuleTableSeeder extends Seeder
       ["config" => "crud-fields", "name" => "crud_fields"],
       ["config" => "permissions", "name" => "permissions"],
       ["config" => "settings-fields", "name" => "settings"],
+      ["config" => "gamification", "name" => "gamification"],
     ];
-  
+
     $moduleRegisterService = app("Modules\Isite\Services\RegisterModuleService");
-  
+
     $moduleRegisterService->registerModule("igamification", $columns, 1);
   }
 }
