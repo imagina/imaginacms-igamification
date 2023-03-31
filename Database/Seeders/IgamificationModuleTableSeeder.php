@@ -23,8 +23,7 @@ class IgamificationModuleTableSeeder extends Seeder
       ["config" => "config", "name" => "config"],
       ["config" => "crud-fields", "name" => "crud_fields"],
       ["config" => "permissions", "name" => "permissions"],
-      ["config" => "settings-fields", "name" => "settings"],
-      ["config" => "gamification", "name" => "gamification"],
+      ["config" => "settings-fields", "name" => "settings"]
     ];
 
     $moduleRegisterService = app("Modules\Isite\Services\RegisterModuleService");

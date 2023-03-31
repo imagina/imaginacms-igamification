@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class IgamificationSeeder extends Seeder
 {
+  protected $uploadedFiles;
+
   /**
    * Run the database seeds.
    *
@@ -16,6 +18,8 @@ class IgamificationSeeder extends Seeder
   public function run()
   {
     Model::unguard();
+    //Instance the uploaded files
+    $this->uploadedFiles = [];
     // Get the modules actives
     $modules = \Module::getByStatus(1);
     //Instance data to seed
@@ -60,8 +64,11 @@ class IgamificationSeeder extends Seeder
         //Create category
         $category = $categoryRepository->create([
           "system_name" => $syncCategory["systemName"],
-          "options" => ['icon' => $syncCategory["icon"] ?? null]
+          "status" => 1,
+          "options" => ['icon' => $syncCategory["icon"] ?? 'fa-light fa-gamepad-modern']
         ]);
+        //Add mainImage
+        $this->syncMediafile($category, $syncCategory);
         //Create translations
         \DB::table('igamification__category_translations')->insert(array_map(function ($locale) use ($category, $syncCategory) {
           return [
@@ -110,20 +117,24 @@ class IgamificationSeeder extends Seeder
           "url" => $syncActivity["url"] ?? null,
           "category_id" => $categoryId,
           "type" => $syncActivity["type"],
+          "status" => 1,
           "options" => [
             'externalScript' => $syncActivity["externalScript"] ?? null,
             'iframe' => $syncActivity["iframe"] ?? null,
             'tourElement' => $syncActivity["tourElement"] ?? null,
             'tourElementPosition' => $syncActivity["tourElementPosition"] ?? null,
             'roles' => $roles->whereIn('slug', ($syncActivity["roles"] ?? []))->pluck('id')->toArray(),
-            'icon' => $syncActivity["icon"] ?? null,
+            'icon' => $syncActivity["icon"] ?? 'fa-light fa-check-to-slot',
           ]
         ]);
-        //Sync relations
+        //Sync categories
         $activity->categories()->attach($categoryId);
+        //Sync forms
         if (isset($syncActivity['formId']) && $syncActivity['formId']) {
           $activity->forms()->attach($forms->where('system_name', $syncActivity['formId'])->pluck('id')->first());
         }
+        //Add mainImage
+        $this->syncMediafile($activity, $syncActivity);
         //Create translations
         \DB::table('igamification__activity_translations')->insert(array_map(function ($locale) use ($activity, $syncActivity) {
           return [
@@ -134,6 +145,30 @@ class IgamificationSeeder extends Seeder
           ];
         }, ["es", "en"]));
       }
+    }
+  }
+
+  public function syncMediafile($entity, $data)
+  {
+    if (isset($data["mainImage"]) && $data["mainImage"]) {
+      //Instance the file path
+      $filePath = $data["mainImage"];
+      //Instance file service
+      $fileService = app("Modules\Media\Services\FileService");
+      //Search the file id in the uploaded files
+      $fileId = $this->uploadedFiles[$filePath] ?? null;
+      //create file
+      if (!$fileId) {
+        //Get base64 file
+        $uploadedFile = getUploadedFileFromUrl(url($filePath));
+        //Create file
+        $file = $fileService->store($uploadedFile, 0, 'publicmedia');
+        //set file if
+        $fileId = $file->id;
+        $this->uploadedFiles[$filePath] = $fileId;
+      }
+      //Sync file id
+      $entity->files()->attach($fileId, ['zone' => 'mainimage']);
     }
   }
 }
