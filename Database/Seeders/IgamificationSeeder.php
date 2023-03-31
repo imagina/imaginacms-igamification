@@ -41,8 +41,8 @@ class IgamificationSeeder extends Seeder
       }
     }
     //Seed the data
-    $this->seedCategories($modulesCategories);
-    $this->seedActivities($modulesActivities);
+    if (count($modulesCategories)) $this->seedCategories($modulesCategories);
+    if (count($modulesActivities)) $this->seedActivities($modulesActivities);
   }
 
   /**
