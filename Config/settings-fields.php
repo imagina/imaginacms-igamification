@@ -41,7 +41,7 @@ return [
   'hcCentralizedSource' => [
     "onlySuperAdmin" => true,
     'name' => 'igamification::hcCentralizedSource',
-    'value' => "https://www.imaginacolombia.com",
+    'value' => "https://wygo.com.co",
     'type' => 'input',
     'groupName' => 'helpCenter',
     'groupTitle' => 'igamification::common.settingGroups.helpCenter',
