@@ -28,7 +28,7 @@ class IgamificationSeeder extends Seeder
     //go throught the modules and search the gamification config
     foreach ($modules as $moduleName => $module) {
       // Get gamification by module
-      $gamification = config('asgard.' . $module->getLowerName() . '.gamification');
+      $gamification = config('asgard.' . $module->getLowerName() . '.gamificationTmp');
       if ($gamification) {
         //Seed categories
         if (isset($gamification["categories"]) && is_array($gamification["categories"])) {
@@ -40,6 +40,7 @@ class IgamificationSeeder extends Seeder
         }
       }
     }
+
     //Seed the data
     if (count($modulesCategories)) $this->seedCategories($modulesCategories);
     if (count($modulesActivities)) $this->seedActivities($modulesActivities);
