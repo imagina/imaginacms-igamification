@@ -32,6 +32,8 @@ with a config named `gamification` with the following structure and dispatching 
       "title" => "igamification::igamification.gamification.categories.adminHome",//Category title|Translatable
       "description" => "igamification::igamification.gamification.categories.adminHomeDescription", //Category description|Translatable
       "icon" => 'fa-light fa-rocket',//Category icon|fontaweson|nullable
+      "categoryView" => "card",//Category view mode|card-button-popup
+      "activityView" => "list",//Activity view mode|listButton-list-cardImage-cardIcon
       "mainImage" => "modules/igamification/category/gamification_admin_home.png",//relative path of a internal public image for category|nullable
     ]
   ],
