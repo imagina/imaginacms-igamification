@@ -11,7 +11,8 @@ return [
       "title" => "$transPrefix.categories.adminHomeActions",
       "description" => "$transPrefix.categories.adminHomeActionsDescription",
       "icon" => "fa-light fa-rocket-launch",
-      "mainImage" => "modules/igamification/category/admin_home_actions.png"
+      "mainImage" => "modules/igamification/category/admin_home_actions.png",
+      "activityView" => "cardIcon"
     ],
     //Admin home tour
     [
