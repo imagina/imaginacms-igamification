@@ -47,6 +47,7 @@ class IgamificationServiceProvider extends ServiceProvider
         $this->mergeConfigFrom($this->getModuleConfigFilePath('igamification', 'permissions'), "asgard.igamification.permissions");
         $this->mergeConfigFrom($this->getModuleConfigFilePath('igamification', 'cmsPages'), "asgard.igamification.cmsPages");
         $this->mergeConfigFrom($this->getModuleConfigFilePath('igamification', 'cmsSidebar'), "asgard.igamification.cmsSidebar");
+        $this->mergeConfigFrom($this->getModuleConfigFilePath('igamification', 'gamification'), "asgard.igamification.gamification");
 
         //$this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
     }

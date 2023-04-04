@@ -13,5 +13,9 @@ return [
   "label" => [
     "tourElement" => "Element Id",
     "tourElementPosition" => "Element Position"
+  ],
+  "activities" => [
+    "repeatAction" => "Tour",
+    "repeatActionDescription" => "From here you can repeat this tour whenever you want"
   ]
 ];
