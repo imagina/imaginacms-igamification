@@ -28,7 +28,7 @@ class IgamificationSeeder extends Seeder
     //go throught the modules and search the gamification config
     foreach ($modules as $moduleName => $module) {
       // Get gamification by module
-      $gamification = config('asgard.' . $module->getLowerName() . '.gamificationTmp');
+      $gamification = config('asgard.' . $module->getLowerName() . '.gamification');
       if ($gamification) {
         //Seed categories
         if (isset($gamification["categories"]) && is_array($gamification["categories"])) {
@@ -66,7 +66,11 @@ class IgamificationSeeder extends Seeder
         $category = $categoryRepository->create([
           "system_name" => $syncCategory["systemName"],
           "status" => 1,
-          "options" => ['icon' => $syncCategory["icon"] ?? 'fa-light fa-gamepad-modern']
+          "options" => [
+            'categoryView' => $syncCategory["categoryView"] ?? 'card',
+            'activityView' => $syncCategory["activityView"] ?? 'listButton',
+            'icon' => $syncCategory["icon"] ?? 'fa-light fa-gamepad-modern',
+          ]
         ]);
         //Add mainImage
         $this->syncMediafile($category, $syncCategory);
