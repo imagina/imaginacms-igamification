@@ -72,8 +72,6 @@ class IgamificationSeeder extends Seeder
             'icon' => $syncCategory["icon"] ?? 'fa-light fa-gamepad-modern',
           ]
         ]);
-        //Add mainImage
-        $this->syncMediafile($category, $syncCategory);
         //Create translations
         \DB::table('igamification__category_translations')->insert(array_map(function ($locale) use ($category, $syncCategory) {
           return [
@@ -85,6 +83,8 @@ class IgamificationSeeder extends Seeder
             "locale" => $locale
           ];
         }, ["es", "en"]));
+        //Add mainImage
+        $this->syncMediafile($category, $syncCategory);
       }
     }
   }
@@ -138,8 +138,6 @@ class IgamificationSeeder extends Seeder
         if (isset($syncActivity['formId']) && $syncActivity['formId']) {
           $activity->forms()->attach($forms->where('system_name', $syncActivity['formId'])->pluck('id')->first());
         }
-        //Add mainImage
-        $this->syncMediafile($activity, $syncActivity);
         //Create translations
         \DB::table('igamification__activity_translations')->insert(array_map(function ($locale) use ($activity, $syncActivity) {
           return [
@@ -149,6 +147,8 @@ class IgamificationSeeder extends Seeder
             "locale" => $locale
           ];
         }, ["es", "en"]));
+        //Add mainImage
+        $this->syncMediafile($activity, $syncActivity);
       }
     }
   }
