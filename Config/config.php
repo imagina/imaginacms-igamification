@@ -10,4 +10,7 @@ return [
       'mainimage' => 'single'
     ]
   ],
+  'documentation' => [
+    'categories' => "igamification::cms.documentation.categories",
+  ]
 ];
