@@ -14,6 +14,10 @@ php artisan module:enable Igamification
 ```bash
 php artisan module:migrate Igamification
 ```
+## Publish Assets (Run it before the seeders)
+```bash
+php artisan module:publish Igamification
+```
 
 ## Seeder
 ```bash
