@@ -18,6 +18,8 @@ class IgamificationSeeder extends Seeder
   public function run()
   {
     Model::unguard();
+    //Publish module
+    \Artisan::call('module:publish', ['module' => 'igamification']);
     //Instance the uploaded files
     $this->uploadedFiles = [];
     // Get the modules actives
