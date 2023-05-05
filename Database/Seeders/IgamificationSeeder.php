@@ -18,8 +18,6 @@ class IgamificationSeeder extends Seeder
   public function run()
   {
     Model::unguard();
-    //Publish module
-    \Artisan::call('module:publish', ['module' => 'igamification']);
     //Instance the uploaded files
     $this->uploadedFiles = [];
     // Get the modules actives
@@ -29,6 +27,8 @@ class IgamificationSeeder extends Seeder
     $modulesActivities = [];
     //go throught the modules and search the gamification config
     foreach ($modules as $moduleName => $module) {
+      //Publish module
+      \Artisan::call('module:publish', ['module' => $module->getLowerName()]);
       // Get gamification by module
       $gamification = config('asgard.' . $module->getLowerName() . '.gamification');
       if ($gamification) {
