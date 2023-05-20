@@ -17,6 +17,7 @@ class Activity extends CrudModel
 
   protected $table = 'igamification__activities';
   public $transformer = 'Modules\Igamification\Transformers\ActivityTransformer';
+  public $repository = 'Modules\Igamification\Repositories\ActivityRepository';
   public $requestValidation = [
     'create' => 'Modules\Igamification\Http\Requests\CreateActivityRequest',
     'update' => 'Modules\Igamification\Http\Requests\UpdateActivityRequest',

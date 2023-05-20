@@ -15,6 +15,7 @@ class Category extends CrudModel
 
   protected $table = 'igamification__categories';
   public $transformer = 'Modules\Igamification\Transformers\CategoryTransformer';
+  public $repository = 'Modules\Igamification\Repositories\CategoryRepository';
   public $requestValidation = [
     'create' => 'Modules\Igamification\Http\Requests\CreateCategoryRequest',
     'update' => 'Modules\Igamification\Http\Requests\UpdateCategoryRequest',
