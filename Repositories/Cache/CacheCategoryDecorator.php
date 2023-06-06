@@ -13,4 +13,19 @@ class CacheCategoryDecorator extends BaseCacheCrudDecorator implements CategoryR
         $this->entityName = 'igamification.categories';
         $this->repository = $category;
     }
+  
+  public function bulkOrder($data, $params)
+  {
+    // TODO: Implement bulkOrder() method.
+  }
+  
+  public function filterQuery($query, $filter, $params)
+  {
+    // TODO: Implement filterQuery() method.
+  }
+  
+  public function syncModelRelations($model, $data)
+  {
+    // TODO: Implement syncModelRelations() method.
+  }
 }

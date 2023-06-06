@@ -13,4 +13,19 @@ class CacheActivityDecorator extends BaseCacheCrudDecorator implements ActivityR
         $this->entityName = 'igamification.activities';
         $this->repository = $activity;
     }
+  
+  public function bulkOrder($data, $params)
+  {
+    // TODO: Implement bulkOrder() method.
+  }
+  
+  public function filterQuery($query, $filter, $params)
+  {
+    // TODO: Implement filterQuery() method.
+  }
+  
+  public function syncModelRelations($model, $data)
+  {
+    // TODO: Implement syncModelRelations() method.
+  }
 }
