@@ -132,6 +132,7 @@ class IgamificationSeeder extends Seeder
             'tourElementPosition' => $syncActivity["tourElementPosition"] ?? null,
             'roles' => $roles->whereIn('slug', ($syncActivity["roles"] ?? []))->pluck('id')->toArray(),
             'icon' => $syncActivity["icon"] ?? 'fa-light fa-check-to-slot',
+            'permission' => $syncActivity["permission"] ?? null,
           ]
         ]);
         //Sync categories
