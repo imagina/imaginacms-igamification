@@ -18,7 +18,7 @@ return [
       "adminHomeTourMenu" => "Menú",
       "adminHomeTourMenuDescription" => "Desde aquí podrás navegar toda la aplicación y administrar los contenidos de tus módulos.",
       "adminHomeTourGoToSite" => "Ver mi Sitio",
-      "adminHomeTourGoToSiteDescription" => "Está acción te permite abrir rápidamente to sitio WEB en una nueva pestaña.",
+      "adminHomeTourGoToSiteDescription" => "Está acción te permite abrir rápidamente tu sitio WEB en una nueva pestaña.",
       "adminHomeTourProfile" => "Mi Perfil",
       "adminHomeTourProfileDescription" => "Aquí tendrás disponible los accesos a editar tu perfil de usuario, configuraciones globales de la aplicación y podrás cerrar tu sesión.",
       "adminHomeTourBreadcrumb" => "Breadcrumb",
