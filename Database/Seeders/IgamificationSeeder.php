@@ -41,10 +41,10 @@ class IgamificationSeeder extends Seeder
         }
 
         //Seed the data
-        if (count($modulesCategories)) {
+        if (count($modulesCategories) && config('asgard.core.core.is_installed')) {
             $this->seedCategories($modulesCategories);
         }
-        if (count($modulesActivities)) {
+        if (count($modulesActivities) && config('asgard.core.core.is_installed')) {
             $this->seedActivities($modulesActivities);
         }
     }
